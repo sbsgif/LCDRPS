@@ -1,78 +1,82 @@
-/*
-NOTE: This is just an experiment and
-      could use some changes to improve performance:
-
-https://x.com/actualTimWilson/status/1730753841795158313
-
-See a production optimized version here: https://charmui.com
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-body {
-    font-family: Inter, sans-serif;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-@keyframes jumbo {
-    from {
-        background-position: 50% 50%, 50% 50%;
-    }
-    to {
-        background-position: 350% 50%, 350% 50%;
-    }
+section{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+  align-items: center;
+  justify-content: center;
 }
-
-.jumbo {
-    --stripes: repeating-linear-gradient(
-        100deg,
-        #fff 0%,
-        #fff 7%,
-        transparent 10%,
-        transparent 12%,
-        #fff 16%
-    );
-    --stripesDark: repeating-linear-gradient(
-        100deg,
-        #000 0%,
-        #000 7%,
-        transparent 10%,
-        transparent 12%,
-        #000 16%
-    );
-    --rainbow: repeating-linear-gradient(
-        100deg,
-        #60a5fa 10%,
-        #e879f9 15%,
-        #60a5fa 20%,
-        #5eead4 25%,
-        #60a5fa 30%
-    );
-    background-image: var(--stripes), var(--rainbow);
-    background-size: 300%, 200%;
-    background-position: 50% 50%, 50% 50%;
-
-    filter: blur(10px) invert(100%);
-
-    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-
-    pointer-events: none;
+.loader{
+  height: 25px;
+  width: 25px;
+  position: relative;
+  animation: rotate 5s  infinite;
 }
-
-.jumbo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: var(--stripes), var(--rainbow);
-    background-size: 200%, 100%;
-    animation: jumbo 60s linear infinite;
-    background-attachment: fixed;
-    mix-blend-mode: difference;
+.ball{
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-
-.dark .jumbo {
-    background-image: var(--stripesDark), var(--rainbow);
-    filter: blur(10px) opacity(50%) saturate(200%);
+.upper{
+  left: 0;
+  top: -22px;
+  background: #2da2ff;
+  animation: upper 1s linear infinite;
 }
-.dark .jumbo::after {
-    background-image: var(--stripesDark), var(--rainbow);
+@keyframes upper {
+  50%{
+    top: 22px;
+  }
+  100%{
+    top: 22px;
+  }
+}
+.right{
+  right: -22px;
+  top: 0;
+  background: #ff337a;
+  animation: right 1s linear infinite;
+}
+@keyframes right {
+  50%{
+    right: 22px;
+  }
+  100%{
+    right: 22px;
+  }
+}
+.lower{
+  bottom: -22px;
+  left: 0;
+  background: #ffff00;
+  animation: lower 1s linear infinite;
+}
+@keyframes lower {
+  50%{
+    bottom: 22px;
+  }
+  100%{
+    bottom: 22px;
+  }
+}
+.left{
+  left: -22px;
+  top: 0;
+  background: #00ff00;
+  animation: left 1s linear infinite;
+}
+@keyframes left {
+  50%{
+    left: 22px;
+  }
+  100%{
+    left: 22px;
+  }
 }
