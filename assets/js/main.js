@@ -70,6 +70,17 @@
      time: 1500
     });
 
+    const mainItems = document.querySelectorAll(
+      '.main-item'
+    );
+    
+    mainItems.forEach((mainItem) => {
+      mainItem.addEventListener('click', () => {
+        mainItem.classList.toggle(
+          'main-item--open'
+        );
+      })
+    });
     /* Back Top Link active
     ========================================================*/
       var offset = 200;
